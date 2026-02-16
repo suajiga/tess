@@ -1,226 +1,246 @@
- <!DOCTYPE html>
- <html lang="id">
- <head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <title>d'Titanum | Luxury Jewelry</title>
-   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
-   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
-   <style>
--    body { font-family: 'Poppins', sans-serif; background:#0f0f0f; color:white; }
-+    body { font-family: 'Poppins', sans-serif; background:#0f0f0f; color:white; scroll-behavior:smooth; }
-     h1,h2,h3 { font-family: 'Playfair Display', serif; }
-     .gold { background: linear-gradient(90deg,#d4af37,#f6e27a,#d4af37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
-     .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; }
-     .btn-gold:hover { opacity:0.9; }
-     .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; transition:.2s ease; }
-     .btn-gold:hover { opacity:0.92; transform:translateY(-1px); }
-     .glass { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
-+    .slider-shell { position:relative; overflow:hidden; border-radius:1rem; border:1px solid rgba(255,255,255,.12); }
-+    .slider-track { display:flex; transition:transform .45s ease; }
-+    .slider-slide { min-width:100%; }
-+    .slider-dot { width:.6rem; height:.6rem; border-radius:9999px; background:rgba(255,255,255,.35); border:none; }
-+    .slider-dot.active { background:#f6e27a; }
-   </style>
- </head>
- <body>
- 
- <section class="py-20 px-6 text-center bg-black">
-   <h1 class="text-6xl gold font-bold mb-4">d'Titanum</h1>
-   <p class="text-xl mb-6">Luxury Jewelry For Everyone & Every Moment</p>
-   <p class="text-2xl md:text-3xl mb-3 gold font-semibold">Tampil Mewah Tanpa Takut Pudar</p>
-   <p class="max-w-2xl mx-auto text-gray-300 mb-8">Perhiasan premium anti luntur, ringan, dan cocok untuk hadiah maupun dipakai setiap hari. Desain elegan yang bikin penampilan langsung naik kelas.</p>
-   <div class="flex flex-wrap gap-3 justify-center mb-10 text-sm">
-     <span class="glass rounded-full px-4 py-2">✅ Anti Karat & Anti Pudar</span>
-     <span class="glass rounded-full px-4 py-2">✅ Garansi Tukar Baru! Jika Pudar Selama 1 Bulan Pemakaian</span>
-     <span class="glass rounded-full px-4 py-2">✅ Pengiriman Seluruh Indonesia</span>
-   </div>
--  <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-gold px-8 py-3 rounded-full inline-block">Chat Admin & Pesan Sekarang</a>
-+  <a href="#form-pemesanan" class="btn-gold px-8 py-3 rounded-full inline-block">Chat Admin & Pesan Sekarang</a>
- </section>
- 
- <section class="py-16 bg-gray-900 text-center px-6">
-   <h2 class="text-3xl gold mb-10">Kenapa Pilih d'Titanum?</h2>
-   <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
-     <div class="glass p-6 rounded-2xl">
-       <h3 class="text-xl mb-2">Kualitas Premium</h3>
-       <p class="text-gray-300">Material berkualitas dengan finishing rapi, nyaman di kulit, dan tetap berkilau dalam pemakaian jangka panjang.</p>
-     </div>
-     <div class="glass p-6 rounded-2xl">
-       <h3 class="text-xl mb-2">Harga Masuk Akal</h3>
-       <p class="text-gray-300">Tampilan seperti perhiasan high-end, tapi tetap ramah kantong. Cocok untuk personal use maupun hadiah.</p>
-     </div>
-   </div>
- </section>
- 
- <section class="py-16 bg-gray-900 text-center">
-   <h2 class="text-3xl gold mb-10">Best Seller Collection</h2>
-+<section class="py-14 bg-black px-6">
-+  <h2 class="text-3xl gold mb-3 text-center">Galeri Produk d'Titanum</h2>
-+  <p class="text-gray-300 mb-8 text-center">Lihat detail koleksi favorit sebelum cek daftar harga.</p>
-+  <div class="max-w-5xl mx-auto">
-+    <div class="slider-shell" id="produk-slider">
-+      <div class="slider-track" id="produk-track">
-+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1400&q=80" alt="Kalung elegan d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
-+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80" alt="Gelang mewah d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
-+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1400&q=80" alt="Cincin premium d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
-+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1635767798638-3665c245f205?auto=format&fit=crop&w=1400&q=80" alt="Anting berkilau d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
-+      </div>
-+      <button type="button" id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-60 w-10 h-10 rounded-full">❮</button>
-+      <button type="button" id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-60 w-10 h-10 rounded-full">❯</button>
-+    </div>
-+    <div id="slider-dots" class="flex justify-center gap-2 mt-4"></div>
-+  </div>
-+</section>
-+
- <section class="py-16 bg-black text-center">
-   <h2 class="text-3xl gold mb-2">Best Seller Collection</h2>
-   <p class="text-gray-300 mb-10">Diskon spesial minggu ini hingga 30% untuk stok terbatas.</p>
-   <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
- 
-     <div class="bg-gray-800 p-6 rounded-2xl text-center">
-       <p class="text-xs text-yellow-300 mb-2">Best Seller #1</p>
-       <h3 class="text-xl mb-2">Kalung Elegan</h3>
-       <p class="gold text-lg">Rp 179.000</p>
-       <p class="text-sm text-gray-400 line-through">Rp 249.000</p>
-       <p class="gold text-2xl">Rp 179.000</p>
-       <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Kalung%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
-     </div>
- 
-     <div class="bg-gray-800 p-6 rounded-2xl text-center">
-       <p class="text-xs text-yellow-300 mb-2">Stok Cepat Habis</p>
-       <h3 class="text-xl mb-2">Gelang Mewah</h3>
-       <p class="gold text-lg">Rp 99.000</p>
-       <p class="text-sm text-gray-400 line-through">Rp 149.000</p>
-       <p class="gold text-2xl">Rp 99.000</p>
-       <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Gelang%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
-     </div>
- 
-     <div class="bg-gray-800 p-6 rounded-2xl text-center">
-       <p class="text-xs text-yellow-300 mb-2">Hadiah Favorit</p>
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>d'Titanum | Luxury Jewelry</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background:#0f0f0f; color:white; }
+    body { font-family: 'Poppins', sans-serif; background:#0f0f0f; color:white; scroll-behavior:smooth; }
+    h1,h2,h3 { font-family: 'Playfair Display', serif; }
+    .gold { background: linear-gradient(90deg,#d4af37,#f6e27a,#d4af37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; }
+    .btn-gold:hover { opacity:0.9; }
+    .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; transition:.2s ease; }
+    .btn-gold:hover { opacity:0.92; transform:translateY(-1px); }
+    .glass { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+    .slider-shell { position:relative; overflow:hidden; border-radius:1rem; border:1px solid rgba(255,255,255,.12); }
+    .slider-track { display:flex; transition:transform .45s ease; }
+    .slider-slide { min-width:100%; }
+    .slider-dot { width:.6rem; height:.6rem; border-radius:9999px; background:rgba(255,255,255,.35); border:none; }
+    .slider-dot.active { background:#f6e27a; }
+  </style>
+</head>
+<body>
+
+<section class="py-20 px-6 text-center bg-black">
+  <h1 class="text-6xl gold font-bold mb-4">d'Titanum</h1>
+  <p class="text-xl mb-6">Luxury Jewelry For Everyone & Every Moment</p>
+  <p class="text-2xl md:text-3xl mb-3 gold font-semibold">Tampil Mewah Tanpa Takut Pudar</p>
+  <p class="max-w-2xl mx-auto text-gray-300 mb-8">Perhiasan premium anti luntur, ringan, dan cocok untuk hadiah maupun dipakai setiap hari. Desain elegan yang bikin penampilan langsung naik kelas.</p>
+  <div class="flex flex-wrap gap-3 justify-center mb-10 text-sm">
+    <span class="glass rounded-full px-4 py-2">✅ Anti Karat & Anti Pudar</span>
+    <span class="glass rounded-full px-4 py-2">✅ Garansi Tukar Baru! Jika Pudar Selama 1 Bulan Pemakaian</span>
+    <span class="glass rounded-full px-4 py-2">✅ Pengiriman Seluruh Indonesia</span>
+  </div>
+  <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-gold px-8 py-3 rounded-full inline-block">Chat Admin & Pesan Sekarang</a>
+  <a href="#form-pemesanan" class="btn-gold px-8 py-3 rounded-full inline-block">Chat Admin & Pesan Sekarang</a>
+</section>
+
+<section class="py-16 bg-gray-900 text-center px-6">
+  <h2 class="text-3xl gold mb-10">Kenapa Pilih d'Titanum?</h2>
+  <div class="grid md:grid-cols-2 gap-6 max-w-4xl mx-auto text-left">
+    <div class="glass p-6 rounded-2xl">
+      <h3 class="text-xl mb-2">Kualitas Premium</h3>
+      <p class="text-gray-300">Material berkualitas dengan finishing rapi, nyaman di kulit, dan tetap berkilau dalam pemakaian jangka panjang.</p>
+    </div>
+    <div class="glass p-6 rounded-2xl">
+      <h3 class="text-xl mb-2">Harga Masuk Akal</h3>
+      <p class="text-gray-300">Tampilan seperti perhiasan high-end, tapi tetap ramah kantong. Cocok untuk personal use maupun hadiah.</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-16 bg-gray-900 text-center">
+  <h2 class="text-3xl gold mb-10">Best Seller Collection</h2>
+<section class="py-14 bg-black px-6">
+  <h2 class="text-3xl gold mb-3 text-center">Galeri Produk d'Titanum</h2>
+  <p class="text-gray-300 mb-8 text-center">Lihat detail koleksi favorit sebelum cek daftar harga.</p>
+  <div class="max-w-5xl mx-auto">
+    <div class="slider-shell" id="produk-slider">
+      <div class="slider-track" id="produk-track">
+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=1400&q=80" alt="Kalung elegan d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=1400&q=80" alt="Gelang mewah d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1608043152269-423dbba4e7e1?auto=format&fit=crop&w=1400&q=80" alt="Cincin premium d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
+        <div class="slider-slide"><img src="https://images.unsplash.com/photo-1635767798638-3665c245f205?auto=format&fit=crop&w=1400&q=80" alt="Anting berkilau d'Titanum" class="w-full h-72 md:h-96 object-cover"></div>
+      </div>
+      <button type="button" id="prev-slide" class="absolute left-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-60 w-10 h-10 rounded-full">❮</button>
+      <button type="button" id="next-slide" class="absolute right-3 top-1/2 -translate-y-1/2 bg-black bg-opacity-60 w-10 h-10 rounded-full">❯</button>
+    </div>
+    <div id="slider-dots" class="flex justify-center gap-2 mt-4"></div>
+  </div>
+</section>
+
+<section class="py-16 bg-black text-center">
+  <h2 class="text-3xl gold mb-2">Best Seller Collection</h2>
+  <p class="text-gray-300 mb-10">Diskon spesial minggu ini hingga 30% untuk stok terbatas.</p>
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <p class="text-xs text-yellow-300 mb-2">Best Seller #1</p>
+      <h3 class="text-xl mb-2">Kalung Elegan</h3>
+      <p class="gold text-lg">Rp 179.000</p>
+      <p class="text-sm text-gray-400 line-through">Rp 249.000</p>
+      <p class="gold text-2xl">Rp 179.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Kalung%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <p class="text-xs text-yellow-300 mb-2">Stok Cepat Habis</p>
+      <h3 class="text-xl mb-2">Gelang Mewah</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <p class="text-sm text-gray-400 line-through">Rp 149.000</p>
+      <p class="gold text-2xl">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Gelang%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <p class="text-xs text-yellow-300 mb-2">Hadiah Favorit</p>
 @@ -95,51 +118,51 @@
- 
- <section class="py-20 bg-gray-900 text-center">
-   <h2 class="text-3xl gold mb-6">Form Pemesanan</h2>
-   <div class="max-w-xl mx-auto bg-black p-8 rounded-2xl">
- <section class="py-16 bg-gray-900 px-6">
-   <h2 class="text-3xl gold mb-10 text-center">Apa Kata Pelanggan Kami</h2>
-   <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-     <div class="glass p-6 rounded-2xl">
-       <p class="text-yellow-300 mb-2">★★★★★</p>
-       <p class="text-gray-200 mb-4">"Awalnya ragu, tapi pas datang ternyata mewah banget. Dipakai tiap hari tetap kinclong!"</p>
-       <p class="text-sm text-gray-400">— Rina, Bandung</p>
-     </div>
-     <div class="glass p-6 rounded-2xl">
-       <p class="text-yellow-300 mb-2">★★★★★</p>
-       <p class="text-gray-200 mb-4">"Packaging rapi, cocok untuk hadiah. Istri saya suka banget, langsung minta beli lagi."</p>
-       <p class="text-sm text-gray-400">— Budi, Surabaya</p>
-     </div>
-     <div class="glass p-6 rounded-2xl">
-       <p class="text-yellow-300 mb-2">★★★★★</p>
-       <p class="text-gray-200 mb-4">"Pelayanan admin cepat, barang sesuai foto, dan pengiriman aman. Recommended!"</p>
-       <p class="text-sm text-gray-400">— Salsa, Jakarta</p>
-     </div>
-   </div>
- </section>
- 
--<section class="py-20 bg-black text-center px-6">
-+<section id="form-pemesanan" class="py-20 bg-black text-center px-6">
-   <h2 class="text-3xl gold mb-3">Form Pemesanan Cepat</h2>
-   <p class="text-gray-300 mb-6">Isi data di bawah ini, admin akan bantu proses order Anda dalam hitungan menit.</p>
-   <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-2xl border border-gray-700">
-     <form onsubmit="kirimWA(); return false;" class="space-y-4">
-       <input id="nama" type="text" placeholder="Nama" class="w-full p-3 rounded text-black" required>
-       <input id="hp" type="text" placeholder="Nomor HP" class="w-full p-3 rounded text-black" required>
-       <textarea id="alamat" placeholder="Alamat" class="w-full p-3 rounded text-black" required></textarea>
-       <select id="produk" class="w-full p-3 rounded text-black">
-         <option>Kalung - 179.000</option>
-         <option>Gelang - 99.000</option>
-         <option>Cincin - 99.000</option>
-         <option>Anting - 99.000</option>
-       </select>
-       <button type="submit" class="btn-gold w-full py-3 rounded-full">Kirim Pesanan via WhatsApp</button>
-     </form>
-     <p class="text-xs text-gray-400 mt-4">Dengan mengirim form, Anda setuju dihubungi admin untuk konfirmasi pesanan.</p>
-   </div>
- </section>
- 
- <section class="py-14 bg-gray-900 px-6">
-   <h2 class="text-3xl gold mb-8 text-center">Pertanyaan Umum</h2>
-   <div class="max-w-3xl mx-auto space-y-4 text-gray-200">
-     <details class="glass p-4 rounded-xl">
-       <summary class="cursor-pointer font-semibold">Apakah perhiasan ini aman untuk kulit sensitif?</summary>
-       <p class="mt-2 text-gray-300">Ya, material kami dipilih agar nyaman dipakai harian. Jika ada reaksi tertentu, kami siap bantu penukaran sesuai kebijakan.</p>
+      <h3 class="text-xl mb-2">Cincin Elegan</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <p class="text-sm text-gray-400 line-through">Rp 149.000</p>
+      <p class="gold text-2xl">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Cincin%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <p class="text-xs text-yellow-300 mb-2">Limited Item</p>
+      <h3 class="text-xl mb-2">Anting Mewah</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <p class="text-sm text-gray-400 line-through">Rp 149.000</p>
+      <p class="gold text-2xl">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Anting%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-20 bg-gray-900 text-center">
+  <h2 class="text-3xl gold mb-6">Form Pemesanan</h2>
+  <div class="max-w-xl mx-auto bg-black p-8 rounded-2xl">
+<section class="py-16 bg-gray-900 px-6">
+  <h2 class="text-3xl gold mb-10 text-center">Apa Kata Pelanggan Kami</h2>
+  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+    <div class="glass p-6 rounded-2xl">
+      <p class="text-yellow-300 mb-2">★★★★★</p>
+      <p class="text-gray-200 mb-4">"Awalnya ragu, tapi pas datang ternyata mewah banget. Dipakai tiap hari tetap kinclong!"</p>
+      <p class="text-sm text-gray-400">— Rina, Bandung</p>
+    </div>
+    <div class="glass p-6 rounded-2xl">
+      <p class="text-yellow-300 mb-2">★★★★★</p>
+      <p class="text-gray-200 mb-4">"Packaging rapi, cocok untuk hadiah. Istri saya suka banget, langsung minta beli lagi."</p>
+      <p class="text-sm text-gray-400">— Budi, Surabaya</p>
+    </div>
+    <div class="glass p-6 rounded-2xl">
+      <p class="text-yellow-300 mb-2">★★★★★</p>
+      <p class="text-gray-200 mb-4">"Pelayanan admin cepat, barang sesuai foto, dan pengiriman aman. Recommended!"</p>
+      <p class="text-sm text-gray-400">— Salsa, Jakarta</p>
+    </div>
+  </div>
+</section>
+
+<section class="py-20 bg-black text-center px-6">
+<section id="form-pemesanan" class="py-20 bg-black text-center px-6">
+  <h2 class="text-3xl gold mb-3">Form Pemesanan Cepat</h2>
+  <p class="text-gray-300 mb-6">Isi data di bawah ini, admin akan bantu proses order Anda dalam hitungan menit.</p>
+  <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-2xl border border-gray-700">
+    <form onsubmit="kirimWA(); return false;" class="space-y-4">
+      <input id="nama" type="text" placeholder="Nama" class="w-full p-3 rounded text-black" required>
+      <input id="hp" type="text" placeholder="Nomor HP" class="w-full p-3 rounded text-black" required>
+      <textarea id="alamat" placeholder="Alamat" class="w-full p-3 rounded text-black" required></textarea>
+      <select id="produk" class="w-full p-3 rounded text-black">
+        <option>Kalung - 179.000</option>
+        <option>Gelang - 99.000</option>
+        <option>Cincin - 99.000</option>
+        <option>Anting - 99.000</option>
+      </select>
+      <button type="submit" class="btn-gold w-full py-3 rounded-full">Kirim Pesanan via WhatsApp</button>
+    </form>
+    <p class="text-xs text-gray-400 mt-4">Dengan mengirim form, Anda setuju dihubungi admin untuk konfirmasi pesanan.</p>
+  </div>
+</section>
+
+<section class="py-14 bg-gray-900 px-6">
+  <h2 class="text-3xl gold mb-8 text-center">Pertanyaan Umum</h2>
+  <div class="max-w-3xl mx-auto space-y-4 text-gray-200">
+    <details class="glass p-4 rounded-xl">
+      <summary class="cursor-pointer font-semibold">Apakah perhiasan ini aman untuk kulit sensitif?</summary>
+      <p class="mt-2 text-gray-300">Ya, material kami dipilih agar nyaman dipakai harian. Jika ada reaksi tertentu, kami siap bantu penukaran sesuai kebijakan.</p>
 @@ -151,33 +174,68 @@
-     <details class="glass p-4 rounded-xl">
-       <summary class="cursor-pointer font-semibold">Apakah bisa COD?</summary>
-       <p class="mt-2 text-gray-300">Untuk area tertentu kami menyediakan COD. Chat admin untuk cek ketersediaan wilayah Anda.</p>
-     </details>
-   </div>
- </section>
- 
- <script>
- function kirimWA(){
-   var nama = document.getElementById('nama').value;
-   var hp = document.getElementById('hp').value;
-   var alamat = document.getElementById('alamat').value;
-   var produk = document.getElementById('produk').value;
- 
-   var url = "https://wa.me/628XXXXXXXXXX?text="
-     + "Halo d'Titanum,%0A"
-     + "Nama: " + nama + "%0A"
-     + "No HP: " + hp + "%0A"
-     + "Alamat: " + alamat + "%0A"
-     + "Pesan: " + produk;
-     + "Pesan: " + produk + "%0A"
-     + "Saya siap order hari ini. Mohon info total dan ongkir ya.";
- 
-   window.open(url, '_blank');
- }
-+
-+(function(){
-+  var track = document.getElementById('produk-track');
-+  var slider = document.getElementById('produk-slider');
-+  if(!track || !slider) return;
-+
-+  var slides = track.children;
-+  var dotsWrap = document.getElementById('slider-dots');
-+  var index = 0;
-+
-+  for (var i = 0; i < slides.length; i++) {
-+    var dot = document.createElement('button');
-+    dot.type = 'button';
-+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
-+    dot.setAttribute('aria-label', 'Pindah ke slide ' + (i + 1));
-+    (function(pos){ dot.addEventListener('click', function(){ goTo(pos); }); })(i);
-+    dotsWrap.appendChild(dot);
-+  }
-+
-+  var dots = dotsWrap.querySelectorAll('.slider-dot');
-+
-+  function goTo(pos){
-+    index = (pos + slides.length) % slides.length;
-+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
-+    for (var j = 0; j < dots.length; j++) {
-+      dots[j].classList.toggle('active', j === index);
-+    }
-+  }
-+
-+  document.getElementById('prev-slide').addEventListener('click', function(){ goTo(index - 1); });
-+  document.getElementById('next-slide').addEventListener('click', function(){ goTo(index + 1); });
-+
-+  setInterval(function(){ goTo(index + 1); }, 4000);
-+})();
-+
- </script>
- 
- <footer class="text-center py-6 bg-black">
-   © 2026 d'Titanum Jewelry
- </footer>
- 
- </body>
- </html>
- 
-EOF
-)
+    </details>
+    <details class="glass p-4 rounded-xl">
+      <summary class="cursor-pointer font-semibold">Berapa lama pengiriman?</summary>
+      <p class="mt-2 text-gray-300">Pengiriman 1-2 hari kerja untuk Jabodetabek dan 2-5 hari kerja untuk luar kota (tergantung ekspedisi).</p>
+    </details>
+    <details class="glass p-4 rounded-xl">
+      <summary class="cursor-pointer font-semibold">Apakah bisa COD?</summary>
+      <p class="mt-2 text-gray-300">Untuk area tertentu kami menyediakan COD. Chat admin untuk cek ketersediaan wilayah Anda.</p>
+    </details>
+  </div>
+</section>
+
+<script>
+function kirimWA(){
+  var nama = document.getElementById('nama').value;
+  var hp = document.getElementById('hp').value;
+  var alamat = document.getElementById('alamat').value;
+  var produk = document.getElementById('produk').value;
+
+  var url = "https://wa.me/628XXXXXXXXXX?text="
+    + "Halo d'Titanum,%0A"
+    + "Nama: " + nama + "%0A"
+    + "No HP: " + hp + "%0A"
+    + "Alamat: " + alamat + "%0A"
+    + "Pesan: " + produk;
+    + "Pesan: " + produk + "%0A"
+    + "Saya siap order hari ini. Mohon info total dan ongkir ya.";
+
+  window.open(url, '_blank');
+}
+
+(function(){
+  var track = document.getElementById('produk-track');
+  var slider = document.getElementById('produk-slider');
+  if(!track || !slider) return;
+
+  var slides = track.children;
+  var dotsWrap = document.getElementById('slider-dots');
+  var index = 0;
+
+  for (var i = 0; i < slides.length; i++) {
+    var dot = document.createElement('button');
+    dot.type = 'button';
+    dot.className = 'slider-dot' + (i === 0 ? ' active' : '');
+    dot.setAttribute('aria-label', 'Pindah ke slide ' + (i + 1));
+    (function(pos){ dot.addEventListener('click', function(){ goTo(pos); }); })(i);
+    dotsWrap.appendChild(dot);
+  }
+
+  var dots = dotsWrap.querySelectorAll('.slider-dot');
+
+  function goTo(pos){
+    index = (pos + slides.length) % slides.length;
+    track.style.transform = 'translateX(-' + (index * 100) + '%)';
+    for (var j = 0; j < dots.length; j++) {
+      dots[j].classList.toggle('active', j === index);
+    }
+  }
+
+  document.getElementById('prev-slide').addEventListener('click', function(){ goTo(index - 1); });
+  document.getElementById('next-slide').addEventListener('click', function(){ goTo(index + 1); });
+
+  setInterval(function(){ goTo(index + 1); }, 4000);
+})();
+
+</script>
+
+<footer class="text-center py-6 bg-black">
+  © 2026 d'Titanum Jewelry
+</footer>
+
+</body>
+</html>
