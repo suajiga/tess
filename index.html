@@ -144,24 +144,29 @@ kecSelect.innerHTML = '<option value="">Gagal load kecamatan</option>';
 }
 }
 
-function generateKodePos(){
-let kode = Math.floor(10000 + Math.random() * 90000);
-document.getElementById("kodepos").value = kode;
+async function generateKodePos(){
+let kecamatan = document.getElementById("kecamatan").value;
+let kodeInput = document.getElementById("kodepos");
+
+if(!kecamatan){
+kodeInput.value = "";
+return;
 }
 
-function submitOrder(){
-let nama = encodeURIComponent(document.getElementById("nama").value);
-let hp = encodeURIComponent(document.getElementById("hp").value);
-let produk = encodeURIComponent(document.getElementById("produk").value);
+try{
+let res = await fetch(`https://api.binderbyte.com/wilayah/kodepos?api_key=ISI_APIKEY_ANDA&kecamatan=${kecamatan}`);
+let data = await res.json();
 
-let provSelect = document.getElementById("provinsi");
-let kotaSelect = document.getElementById("kota");
+if(data.status == 200 && data.value.length > 0){
+kodeInput.value = data.value[0].kodepos;
+}else{
+kodeInput.value = "Tidak ditemukan";
+}
+}catch(err){
+kodeInput.value = "Error API";
+}
+}
 
-let provText = provSelect.options[provSelect.selectedIndex]?.text || "";
-let kotaText = kotaSelect.options[kotaSelect.selectedIndex]?.text || "";
-let kec = encodeURIComponent(document.getElementById("kecamatan").value);
-let kodepos = encodeURIComponent(document.getElementById("kodepos").value);
-let alamat = encodeURIComponent(document.getElementById("alamat").value);
 
 let message =
 `Halo d'Titanium,%0A%0ASaya ingin memesan:%0AProduk: ${produk}%0ANama: ${nama}%0ANo HP: ${hp}%0AAlamat: ${alamat}, ${kec}, ${kotaText}, ${provText}%0AKode Pos: ${kodepos}`;
