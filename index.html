@@ -16,6 +16,9 @@
     .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; transition:.2s ease; }
     .btn-gold:hover { opacity:0.92; transform:translateY(-1px); }
     .glass { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.08); }
+    .slider-track { scrollbar-width: none; }
+    .slider-track::-webkit-scrollbar { display: none; }
+    .slider-track.dragging { cursor: grabbing; scroll-behavior: auto; }
   </style>
 </head>
 <body>
@@ -47,8 +50,22 @@
   </div>
 </section>
 
-<section class="py-16 bg-gray-900 text-center">
-  <h2 class="text-3xl gold mb-10">Best Seller Collection</h2>
+<section class="py-16 bg-black text-center px-6">
+  <h2 class="text-3xl gold mb-3">Foto Produk d'Titanum</h2>
+  <p class="text-gray-300 mb-8">Geser foto untuk lihat detail koleksi favorit kami.</p>
+  <div class="max-w-6xl mx-auto relative">
+    <button id="slide-prev" type="button" aria-label="Slide ke kiri" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white w-10 h-10 rounded-full">❮</button>
+    <div id="product-slider" class="slider-track flex gap-4 overflow-x-auto scroll-smooth px-12 cursor-grab select-none">
+      <img src="https://images.unsplash.com/photo-1617038260897-41a1f14a8ca0?auto=format&fit=crop&w=900&q=80" alt="Kalung elegan d'Titanum" class="w-72 h-72 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?auto=format&fit=crop&w=900&q=80" alt="Gelang mewah d'Titanum" class="w-72 h-72 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1635767798638-3e25273a8236?auto=format&fit=crop&w=900&q=80" alt="Cincin premium d'Titanum" class="w-72 h-72 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1620656798579-1984d4ecf6f0?auto=format&fit=crop&w=900&q=80" alt="Anting berkilau d'Titanum" class="w-72 h-72 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?auto=format&fit=crop&w=900&q=80" alt="Set perhiasan d'Titanum" class="w-72 h-72 object-cover rounded-2xl flex-none">
+    </div>
+    <button id="slide-next" type="button" aria-label="Slide ke kanan" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white w-10 h-10 rounded-full">❯</button>
+  </div>
+</section>
+
 <section class="py-16 bg-black text-center">
   <h2 class="text-3xl gold mb-2">Best Seller Collection</h2>
   <p class="text-gray-300 mb-10">Diskon spesial minggu ini hingga 30% untuk stok terbatas.</p>
@@ -93,9 +110,26 @@
   </div>
 </section>
 
-<section class="py-20 bg-gray-900 text-center">
-  <h2 class="text-3xl gold mb-6">Form Pemesanan</h2>
-  <div class="max-w-xl mx-auto bg-black p-8 rounded-2xl">
+<section id="form-pemesanan" class="py-20 bg-black text-center px-6">
+  <h2 class="text-3xl gold mb-3">Form Pemesanan Cepat</h2>
+  <p class="text-gray-300 mb-6">Isi data di bawah ini, admin akan bantu proses order Anda dalam hitungan menit.</p>
+  <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-2xl border border-gray-700">
+    <form onsubmit="kirimWA(); return false;" class="space-y-4">
+      <input id="nama" type="text" placeholder="Nama" class="w-full p-3 rounded text-black" required>
+      <input id="hp" type="text" placeholder="Nomor HP" class="w-full p-3 rounded text-black" required>
+      <textarea id="alamat" placeholder="Alamat" class="w-full p-3 rounded text-black" required></textarea>
+      <select id="produk" class="w-full p-3 rounded text-black">
+        <option>Kalung - 179.000</option>
+        <option>Gelang - 99.000</option>
+        <option>Cincin - 99.000</option>
+        <option>Anting - 99.000</option>
+      </select>
+      <button type="submit" class="btn-gold w-full py-3 rounded-full">Kirim Pesanan via WhatsApp</button>
+    </form>
+    <p class="text-xs text-gray-400 mt-4">Dengan mengirim form, Anda setuju dihubungi admin untuk konfirmasi pesanan.</p>
+  </div>
+</section>
+
 <section class="py-16 bg-gray-900 px-6">
   <h2 class="text-3xl gold mb-10 text-center">Apa Kata Pelanggan Kami</h2>
   <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
@@ -114,26 +148,6 @@
       <p class="text-gray-200 mb-4">"Pelayanan admin cepat, barang sesuai foto, dan pengiriman aman. Recommended!"</p>
       <p class="text-sm text-gray-400">— Salsa, Jakarta</p>
     </div>
-  </div>
-</section>
-
-<section id="form-pemesanan" class="py-20 bg-black text-center px-6">
-  <h2 class="text-3xl gold mb-3">Form Pemesanan Cepat</h2>
-  <p class="text-gray-300 mb-6">Isi data di bawah ini, admin akan bantu proses order Anda dalam hitungan menit.</p>
-  <div class="max-w-xl mx-auto bg-gray-900 p-8 rounded-2xl border border-gray-700">
-    <form onsubmit="kirimWA(); return false;" class="space-y-4">
-      <input id="nama" type="text" placeholder="Nama" class="w-full p-3 rounded text-black" required>
-      <input id="hp" type="text" placeholder="Nomor HP" class="w-full p-3 rounded text-black" required>
-      <textarea id="alamat" placeholder="Alamat" class="w-full p-3 rounded text-black" required></textarea>
-      <select id="produk" class="w-full p-3 rounded text-black">
-        <option>Kalung - 179.000</option>
-        <option>Gelang - 99.000</option>
-        <option>Cincin - 99.000</option>
-        <option>Anting - 99.000</option>
-      </select>
-      <button type="submit" class="btn-gold w-full py-3 rounded-full">Kirim Pesanan via WhatsApp</button>
-    </form>
-    <p class="text-xs text-gray-400 mt-4">Dengan mengirim form, Anda setuju dihubungi admin untuk konfirmasi pesanan.</p>
   </div>
 </section>
 
@@ -167,11 +181,54 @@ function kirimWA(){
     + "Nama: " + nama + "%0A"
     + "No HP: " + hp + "%0A"
     + "Alamat: " + alamat + "%0A"
-    + "Pesan: " + produk;
     + "Pesan: " + produk + "%0A"
     + "Saya siap order hari ini. Mohon info total dan ongkir ya.";
 
   window.open(url, '_blank');
+}
+
+const slider = document.getElementById('product-slider');
+const prevButton = document.getElementById('slide-prev');
+const nextButton = document.getElementById('slide-next');
+
+if (slider && prevButton && nextButton) {
+  const step = 320;
+
+  prevButton.addEventListener('click', function() {
+    slider.scrollBy({ left: -step, behavior: 'smooth' });
+  });
+
+  nextButton.addEventListener('click', function() {
+    slider.scrollBy({ left: step, behavior: 'smooth' });
+  });
+
+  let isDown = false;
+  let startX = 0;
+  let scrollStart = 0;
+
+  slider.addEventListener('mousedown', function(event) {
+    isDown = true;
+    slider.classList.add('dragging');
+    startX = event.pageX;
+    scrollStart = slider.scrollLeft;
+  });
+
+  slider.addEventListener('mouseleave', function() {
+    isDown = false;
+    slider.classList.remove('dragging');
+  });
+
+  slider.addEventListener('mouseup', function() {
+    isDown = false;
+    slider.classList.remove('dragging');
+  });
+
+  slider.addEventListener('mousemove', function(event) {
+    if (!isDown) return;
+    event.preventDefault();
+    const distance = event.pageX - startX;
+    slider.scrollLeft = scrollStart - distance;
+  });
 }
 </script>
 
