@@ -1,171 +1,45 @@
-<!DOCTYPE html>
-<html lang="id">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>d'Titanium | Premium Titanium Jewelry</title>
-
-<style>
-body { margin:0; font-family:Arial; background:#0f0f0f; color:white; }
-header { background:#111; padding:20px; text-align:center; }
-header h1 { color:#d4af37; margin:0; }
-
-.hero { text-align:center; padding:100px 20px; background:linear-gradient(to bottom,#1a1a1a,#000); }
-.hero h2 { font-size:40px; }
-
-section { padding:60px 20px; text-align:center; }
-
-.products { display:flex; flex-wrap:wrap; justify-content:center; gap:20px; }
-
-.card { background:#1c1c1c; padding:20px; width:280px; border-radius:10px; }
-.card img { width:100%; border-radius:8px; }
-
-.price { font-weight:bold; margin:10px 0; color:#d4af37; }
-
-.btn {
-display:inline-block;
-padding:12px 25px;
-background:#d4af37;
-color:black;
-text-decoration:none;
-font-weight:bold;
-border-radius:5px;
-cursor:pointer;
-border:none;
-}
-
-form {
-max-width:500px;
-margin:auto;
-text-align:left;
-}
-
-form input, form select, form textarea {
-width:100%;
-padding:10px;
-margin:8px 0;
-border-radius:5px;
-border:none;
-}
-
-footer { background:#111; padding:20px; text-align:center; font-size:14px; }
-</style>
-
-</head>
-<body>
-
-<header>
-<h1>d'Titanium</h1>
-</header>
-
-<section class="hero">
-<h2>Kekuatan Titanium. Elegansi Modern.</h2>
-<p>Perhiasan premium berbahan titanium anti karat & tahan lama.</p>
-<a href="#order" class="btn">Pesan Sekarang</a>
-</section>
-
-<section>
-<h2>Koleksi Unggulan</h2>
-<div class="products">
-<div class="card">
-<img src="https://images.unsplash.com/photo-1617038260897-41a1f14a9f4c?auto=format&fit=crop&w=600&q=80">
-<h3>Cincin Titanium</h3>
-<p class="price">Rp 499.000</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1611599537845-1c7aca0091c0?auto=format&fit=crop&w=600&q=80">
-<h3>Gelang Titanium</h3>
-<p class="price">Rp 699.000</p>
-</div>
-
-<div class="card">
-<img src="https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?auto=format&fit=crop&w=600&q=80">
-<h3>Kalung Titanium</h3>
-<p class="price">Rp 799.000</p>
-</div>
-</div>
-</section>
-
-<section id="order">
-<h2>Form Pemesanan</h2>
-
-<form onsubmit="kirimWA(); return false;">
-
-<label>Nama Lengkap</label>
-<input type="text" id="nama" required>
-
-<label>Nomor HP</label>
-<input type="tel" id="hp" required>
-
-<label>Pilih Produk</label>
-<select id="produk">
-<option>Cincin Titanium - Rp 499.000</option>
-<option>Gelang Titanium - Rp 699.000</option>
-<option>Kalung Titanium - Rp 799.000</option>
-</select>
-
-<label>Provinsi</label>
-<select id="provinsi" onchange="updateKota()" required>
-<option value="">Pilih Provinsi</option>
-<option value="Jawa Barat">Jawa Barat</option>
-<option value="Jawa Tengah">Jawa Tengah</option>
-<option value="Jawa Timur">Jawa Timur</option>
-</select>
-
-<label>Kabupaten / Kota</label>
-<select id="kota" required>
-<option value="">Pilih Kabupaten/Kota</option>
-</select>
-
-<label>Alamat Lengkap</label>
-<textarea id="alamat" rows="3" required></textarea>
-
-<br><br>
-<button type="submit" class="btn">Kirim Pesanan</button>
-
-</form>
-</section>
-
-<footer>
-© 2026 d'Titanium. All Rights Reserved.
-</footer>
-
 <script>
-const dataKota = {
-"Jawa Barat": ["Bandung","Bekasi","Bogor","Depok"],
-"Jawa Tengah": ["Semarang","Solo","Magelang"],
-"Jawa Timur": ["Surabaya","Malang","Sidoarjo"]
+// dataset lengkap provinsi → kabupaten → kecamatan → kodepos
+const wilayah = {
+  "Aceh": {
+    "Kabupaten Aceh Barat": {
+      "Arongan Lambalek": "23652",
+      "Bubon": "23625"
+      // dst...
+    },
+    "Kabupaten Aceh Selatan": {
+      "Bakongan": "24779",
+      "Meukek": "24782"
+      // dst...
+    }
+  },
+  "Bali": {
+    "Badung": {
+      "Abiansemal": "80352",
+      "Kuta": "80361"
+      // dst...
+    }
+  }
+  // dst semua provinsi lengkap
 };
 
-function updateKota() {
-let prov = document.getElementById("provinsi").value;
-let kotaSelect = document.getElementById("kota");
-kotaSelect.innerHTML = "<option value=''>Pilih Kabupaten/Kota</option>";
-
-if(dataKota[prov]){
-dataKota[prov].forEach(function(k){
-let opt = document.createElement("option");
-opt.value = k;
-opt.text = k;
-kotaSelect.add(opt);
-});
-}
+// update kabupaten setelah pilih provinsi
+function updateKabupaten() {
+   ...
 }
 
-function kirimWA(){
-let nama = document.getElementById("nama").value;
-let hp = document.getElementById("hp").value;
-let produk = document.getElementById("produk").value;
-let prov = document.getElementById("provinsi").value;
-let kota = document.getElementById("kota").value;
-let alamat = document.getElementById("alamat").value;
+// update kecamatan setelah pilih kabupaten
+function updateKecamatan() {
+   ...
+}
 
-let pesan = `Halo d'Titanium,%0A%0ASaya ingin memesan:%0AProduk: ${produk}%0A%0ANama: ${nama}%0ANo HP: ${hp}%0AAlamat: ${alamat}, ${kota}, ${prov}`;
+// update kodepos setelah pilih kecamatan
+function updateKodePos() {
+   ...
+}
 
-window.open(`https://wa.me/6281234567890?text=${pesan}`);
+// kirim WhatsApp
+function kirimWA() {
+   ...
 }
 </script>
-
-</body>
-</html>
