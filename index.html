@@ -131,23 +131,23 @@
 </section>
 
 <section class="py-16 bg-gray-900 px-6">
-  <h2 class="text-3xl gold mb-10 text-center">Apa Kata Pelanggan Kami</h2>
-  <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-    <div class="glass p-6 rounded-2xl">
-      <p class="text-yellow-300 mb-2">★★★★★</p>
-      <p class="text-gray-200 mb-4">"Awalnya ragu, tapi pas datang ternyata mewah banget. Dipakai tiap hari tetap kinclong!"</p>
-      <p class="text-sm text-gray-400">— Rina, Bandung</p>
+  <h2 class="text-3xl gold mb-3 text-center">Apa Kata Pelanggan Kami</h2>
+  <p class="text-gray-300 text-center mb-8">Slide foto testimoni pelanggan yang sudah order d'Titanum.</p>
+  <div class="max-w-6xl mx-auto relative">
+    <button id="testimony-prev" type="button" aria-label="Testimoni ke kiri" class="absolute left-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white w-10 h-10 rounded-full">❮</button>
+    <div id="testimony-slider" class="slider-track flex gap-4 overflow-x-auto scroll-smooth px-12 cursor-grab select-none">
+      <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 1" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 2" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1531123897727-8f129e1688ce?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 3" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 4" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 5" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 6" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1542204625-de293a6b4179?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 7" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 8" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 9" class="w-80 h-96 object-cover rounded-2xl flex-none">
+      <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?auto=format&fit=crop&w=900&q=80" alt="Foto testimoni pelanggan 10" class="w-80 h-96 object-cover rounded-2xl flex-none">
     </div>
-    <div class="glass p-6 rounded-2xl">
-      <p class="text-yellow-300 mb-2">★★★★★</p>
-      <p class="text-gray-200 mb-4">"Packaging rapi, cocok untuk hadiah. Istri saya suka banget, langsung minta beli lagi."</p>
-      <p class="text-sm text-gray-400">— Budi, Surabaya</p>
-    </div>
-    <div class="glass p-6 rounded-2xl">
-      <p class="text-yellow-300 mb-2">★★★★★</p>
-      <p class="text-gray-200 mb-4">"Pelayanan admin cepat, barang sesuai foto, dan pengiriman aman. Recommended!"</p>
-      <p class="text-sm text-gray-400">— Salsa, Jakarta</p>
-    </div>
+    <button id="testimony-next" type="button" aria-label="Testimoni ke kanan" class="absolute right-0 top-1/2 -translate-y-1/2 z-10 bg-gray-800/90 hover:bg-gray-700 text-white w-10 h-10 rounded-full">❯</button>
   </div>
 </section>
 
@@ -187,12 +187,12 @@ function kirimWA(){
   window.open(url, '_blank');
 }
 
-const slider = document.getElementById('product-slider');
-const prevButton = document.getElementById('slide-prev');
-const nextButton = document.getElementById('slide-next');
+function initDraggableSlider(sliderId, prevId, nextId, step) {
+  const slider = document.getElementById(sliderId);
+  const prevButton = document.getElementById(prevId);
+  const nextButton = document.getElementById(nextId);
 
-if (slider && prevButton && nextButton) {
-  const step = 320;
+  if (!slider || !prevButton || !nextButton) return;
 
   prevButton.addEventListener('click', function() {
     slider.scrollBy({ left: -step, behavior: 'smooth' });
@@ -230,6 +230,9 @@ if (slider && prevButton && nextButton) {
     slider.scrollLeft = scrollStart - distance;
   });
 }
+
+initDraggableSlider('product-slider', 'slide-prev', 'slide-next', 320);
+initDraggableSlider('testimony-slider', 'testimony-prev', 'testimony-next', 336);
 </script>
 
 <footer class="text-center py-6 bg-black">
