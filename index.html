@@ -1,182 +1,98 @@
+
 <!DOCTYPE html>
 <html lang="id">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>d'Titanium - Form Pemesanan</title>
-
-<style>
-body{margin:0;font-family:Arial;background:#0f0f0f;color:#fff;}
-header{background:#111;padding:20px;text-align:center;}
-header h1{color:#d4af37;margin:0;}
-section{padding:40px 20px;text-align:center;}
-form{max-width:600px;margin:auto;text-align:left;}
-input,select,textarea{
-width:100%;padding:10px;margin:8px 0;border-radius:5px;border:none;
-}
-.btn{
-display:inline-block;padding:12px 25px;background:#d4af37;
-color:black;font-weight:bold;border-radius:5px;cursor:pointer;border:none;
-}
-footer{background:#111;padding:20px;text-align:center;font-size:14px;margin-top:40px;}
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>d'Titanum | Luxury Jewelry</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body { font-family: 'Poppins', sans-serif; background:#0f0f0f; color:white; }
+    h1,h2,h3 { font-family: 'Playfair Display', serif; }
+    .gold { background: linear-gradient(90deg,#d4af37,#f6e27a,#d4af37); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .btn-gold { background: linear-gradient(90deg,#d4af37,#f6e27a); color:black; font-weight:600; }
+    .btn-gold:hover { opacity:0.9; }
+  </style>
 </head>
 <body>
 
-<header>
-<h1>d'Titanium</h1>
-</header>
-
-<section>
-<h2>Form Pemesanan</h2>
-
-<form onsubmit="submitOrder(); return false;">
-
-<label>Nama Lengkap</label>
-<input type="text" id="nama" required>
-
-<label>Nomor HP</label>
-<input type="tel" id="hp" required>
-
-<label>Pilih Produk</label>
-<select id="produk">
-<option value="Cincin Titanium - Rp 499.000">Cincin Titanium</option>
-<option value="Gelang Titanium - Rp 699.000">Gelang Titanium</option>
-<option value="Kalung Titanium - Rp 799.000">Kalung Titanium</option>
-</select>
-
-<label>Provinsi</label>
-<select id="provinsi" onchange="loadKota()" required>
-<option value="">Memuat provinsi...</option>
-</select>
-
-<label>Kabupaten / Kota</label>
-<select id="kota" onchange="loadKecamatan()" required>
-<option value="">Pilih Provinsi dulu</option>
-</select>
-
-<label>Kecamatan</label>
-<select id="kecamatan" onchange="generateKodePos()" required>
-<option value="">Pilih Kota dulu</option>
-</select>
-
-<label>Kode Pos</label>
-<input type="text" id="kodepos" readonly placeholder="Otomatis muncul">
-
-<label>Alamat Lengkap</label>
-<textarea id="alamat" rows="3" required></textarea>
-
-<button type="submit" class="btn">Kirim Pesanan</button>
-
-</form>
+<section class="py-20 px-6 text-center bg-black">
+  <h1 class="text-5xl gold font-bold mb-4">d'Titanum</h1>
+  <p class="text-xl mb-6">Luxury Jewelry For Every Moment</p>
+  <a href="https://wa.me/628XXXXXXXXXX" target="_blank" class="btn-gold px-8 py-3 rounded-full inline-block">Pesan Sekarang</a>
 </section>
 
-<footer>© 2026 d'Titanium</footer>
+<section class="py-16 bg-gray-900 text-center">
+  <h2 class="text-3xl gold mb-10">Best Seller Collection</h2>
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-6">
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <h3 class="text-xl mb-2">Kalung Elegan</h3>
+      <p class="gold text-lg">Rp 179.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Kalung%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <h3 class="text-xl mb-2">Gelang Mewah</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Gelang%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <h3 class="text-xl mb-2">Cincin Elegan</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Cincin%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+    <div class="bg-gray-800 p-6 rounded-2xl text-center">
+      <h3 class="text-xl mb-2">Anting Mewah</h3>
+      <p class="gold text-lg">Rp 99.000</p>
+      <a href="https://wa.me/628XXXXXXXXXX?text=Saya%20ingin%20pesan%20Anting%20d'Titanum" target="_blank" class="btn-gold block mt-4 py-2 rounded-full">Beli Sekarang</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="py-20 bg-gray-900 text-center">
+  <h2 class="text-3xl gold mb-6">Form Pemesanan</h2>
+  <div class="max-w-xl mx-auto bg-black p-8 rounded-2xl">
+    <form onsubmit="kirimWA(); return false;" class="space-y-4">
+      <input id="nama" type="text" placeholder="Nama" class="w-full p-3 rounded text-black" required>
+      <input id="hp" type="text" placeholder="Nomor HP" class="w-full p-3 rounded text-black" required>
+      <textarea id="alamat" placeholder="Alamat" class="w-full p-3 rounded text-black" required></textarea>
+      <select id="produk" class="w-full p-3 rounded text-black">
+        <option>Kalung - 179.000</option>
+        <option>Gelang - 99.000</option>
+        <option>Cincin - 99.000</option>
+        <option>Anting - 99.000</option>
+      </select>
+      <button type="submit" class="btn-gold w-full py-3 rounded-full">Kirim Pesanan via WhatsApp</button>
+    </form>
+  </div>
+</section>
 
 <script>
+function kirimWA(){
+  var nama = document.getElementById('nama').value;
+  var hp = document.getElementById('hp').value;
+  var alamat = document.getElementById('alamat').value;
+  var produk = document.getElementById('produk').value;
 
-async function loadProvinsi() {
-try{
-let res = await fetch("https://www.emsifa.com/api-wilayah-indonesia/api/provinces.json");
-let data = await res.json();
-let select = document.getElementById("provinsi");
-select.innerHTML = '<option value="">Pilih Provinsi</option>';
+  var url = "https://wa.me/628XXXXXXXXXX?text="
+    + "Halo d'Titanum,%0A"
+    + "Nama: " + nama + "%0A"
+    + "No HP: " + hp + "%0A"
+    + "Alamat: " + alamat + "%0A"
+    + "Pesan: " + produk;
 
-data.forEach(p => {
-let opt = document.createElement("option");
-opt.value = p.id;
-opt.text = p.name;
-select.add(opt);
-});
-}catch(err){
-document.getElementById("provinsi").innerHTML =
-'<option value="">Gagal load data</option>';
+  window.open(url, '_blank');
 }
-}
-
-async function loadKota() {
-let provId = document.getElementById("provinsi").value;
-let kotaSelect = document.getElementById("kota");
-let kecSelect = document.getElementById("kecamatan");
-
-kotaSelect.innerHTML = '<option value="">Memuat...</option>';
-kecSelect.innerHTML = '<option value="">Pilih Kota dulu</option>';
-document.getElementById("kodepos").value = "";
-
-try{
-let res = await fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/regencies/${provId}.json`);
-let data = await res.json();
-
-kotaSelect.innerHTML = '<option value="">Pilih Kabupaten/Kota</option>';
-
-data.forEach(k => {
-let opt = document.createElement("option");
-opt.value = k.id;
-opt.text = k.name;
-kotaSelect.add(opt);
-});
-}catch(err){
-kotaSelect.innerHTML = '<option value="">Gagal load kota</option>';
-}
-}
-
-async function loadKecamatan() {
-let kotaId = document.getElementById("kota").value;
-let kecSelect = document.getElementById("kecamatan");
-
-kecSelect.innerHTML = '<option value="">Memuat...</option>';
-document.getElementById("kodepos").value = "";
-
-try{
-let res = await fetch(`https://www.emsifa.com/api-wilayah-indonesia/api/districts/${kotaId}.json`);
-let data = await res.json();
-
-kecSelect.innerHTML = '<option value="">Pilih Kecamatan</option>';
-
-data.forEach(k => {
-let opt = document.createElement("option");
-opt.value = k.name;
-opt.text = k.name;
-kecSelect.add(opt);
-});
-}catch(err){
-kecSelect.innerHTML = '<option value="">Gagal load kecamatan</option>';
-}
-}
-
-async function generateKodePos(){
-let kecamatan = document.getElementById("kecamatan").value;
-let kodeInput = document.getElementById("kodepos");
-
-if(!kecamatan){
-kodeInput.value = "";
-return;
-}
-
-try{
-let res = await fetch(`https://api.binderbyte.com/wilayah/kodepos?api_key=ISI_APIKEY_ANDA&kecamatan=${kecamatan}`);
-let data = await res.json();
-
-if(data.status == 200 && data.value.length > 0){
-kodeInput.value = data.value[0].kodepos;
-}else{
-kodeInput.value = "Tidak ditemukan";
-}
-}catch(err){
-kodeInput.value = "Error API";
-}
-}
-
-
-let message =
-`Halo d'Titanium,%0A%0ASaya ingin memesan:%0AProduk: ${produk}%0ANama: ${nama}%0ANo HP: ${hp}%0AAlamat: ${alamat}, ${kec}, ${kotaText}, ${provText}%0AKode Pos: ${kodepos}`;
-
-window.open(`https://wa.me/6285205808800?text=${message}`);
-}
-
-window.onload = loadProvinsi;
-
 </script>
+
+<footer class="text-center py-6 bg-black">
+  © 2026 d'Titanum Jewelry
+</footer>
 
 </body>
 </html>
